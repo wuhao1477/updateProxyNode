@@ -1,0 +1,2 @@
+# updateProxyNode
+这是一个使用nodejs定时更新机场订阅节点的程序，并在更新后搭配glider运行代理服务
