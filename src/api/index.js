@@ -15,7 +15,7 @@ export async function getProxyNodeList() {
     return Promise.all(promiseList).then(async (res) => {
         const resultList = []
         const otherList = []
-        console.log(res)
+        // console.log(res)
         for(const item of res){
             if(typeof item == 'undefined') continue
             const {data} = item
