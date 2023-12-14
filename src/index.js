@@ -7,8 +7,16 @@ import { getProxyNodeList } from "./api/index.js";
 // import template from "./template.yaml";
 const template = fs.readFileSync("./src/template.conf", "utf-8");
 let child;
+let isLinux = false;
 
-
+// 检测当前操作系统是否是Linux系统
+if (process.platform === "linux") {
+  console.log("当前是Linux系统");
+  isLinux = true;
+} else {
+  isLinux = false
+  console.log(`当前是其他系统：${process.platform}`);
+}
 main();
 function main() {
   updateProxy()
@@ -40,7 +48,7 @@ async function updateProxy() {
     fs.writeFileSync("./glider/glider.conf", yamlStr);
     // 调用cmd命令,并在cmd窗口打印出结果，30秒后自动关闭cmd窗口
     const args = ["-config", "./glider/glider.conf"];
-    const command = "./glider/glider1.exe";
+    const command = "./glider/glider" + (isLinux ? "" : ".exe");
     child = spawn(command, args);
 
     // 监听输出

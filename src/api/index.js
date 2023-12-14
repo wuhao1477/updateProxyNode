@@ -22,7 +22,7 @@ export async function getProxyNodeList() {
             const {proxies} = await toJsonData(data)
             if(proxies){
                 resultList.push(...proxies)
-            }else{
+            } else if(typeof data !== 'undefined'){
                 resultList.push(...data)
             }
         }

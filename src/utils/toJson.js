@@ -32,7 +32,7 @@ export function toJsonData(str) {
         return Promise.resolve(jsonObj)
       } catch (e) {
         console.error("解析错误:", e.message);  // 输出具体的错误信息
-        return Promise.reject(e)
+        return Promise.resolve({})
       }
 }
 
