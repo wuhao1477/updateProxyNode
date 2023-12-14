@@ -1,0 +1,1 @@
+import * as start from './src/index.js';
