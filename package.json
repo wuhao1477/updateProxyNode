@@ -12,11 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "alova": "^2.15.0",
     "axios": "^1.6.2",
     "base-64": "^1.0.0",
-    "js-yaml": "^4.1.0",
-    "module-alias": "^2.2.3"
+    "js-yaml": "^4.1.0"
   },
   "_moduleAliases": {
     "@": "src"

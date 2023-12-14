@@ -8,6 +8,7 @@ import { getProxyNodeList } from "./api/index.js";
 const template = fs.readFileSync("./src/template.conf", "utf-8");
 let child;
 let isLinux = false;
+let timer = null
 
 // 检测当前操作系统是否是Linux系统
 if (process.platform === "linux") {
@@ -57,18 +58,20 @@ async function updateProxy() {
     });
 
     child.stderr.on("data", (data) => {
-      console.error(`stderr: ${data}`);
+      // console.error(`stderr: ${data}`);
     });
 
     return new Promise((resolve, reject) => {
       // 设置一个定时器，比如5秒后终止子进程
-      setTimeout(() => {
+      timer = setTimeout(() => {
         child.kill(); // 发送中断信号
         console.log("kill glider");
+        clearTimeout(timer);
         resolve();
       }, updateTime);
     });
   }).then(() => {
+    clearTimeout(timer);
     console.log("start updateProxy ===");
     setTimeout(() => {
       updateProxy();
