@@ -49,7 +49,7 @@ async function updateProxy() {
     fs.writeFileSync("./glider/glider.conf", yamlStr);
     // 调用cmd命令,并在cmd窗口打印出结果，30秒后自动关闭cmd窗口
     const args = ["-config", "./glider/glider.conf"];
-    const command = "./glider/glider" + (isLinux ? "" : ".exe");
+    const command =  `${(isLinux ? "" : "sudo")} ./glider/glider${(isLinux ? "" : ".exe")}`;
     child = spawn(command, args);
 
     // 监听输出
